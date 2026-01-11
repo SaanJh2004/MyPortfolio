@@ -414,6 +414,19 @@ footer {
     .menu-toggle {
         display: block;
         color: #fff;
+        position: absolute;
+        top: 1.5rem;
+        right: 5%;
+        z-index: 101;
+        /* Ensure it stays on top */
+    }
+
+    .hero {
+        padding-top: 9rem;
+        /* Lower content below header */
+        justify-content: flex-start;
+        height: auto;
+        min-height: 100vh;
     }
 
     .hero h1 {
