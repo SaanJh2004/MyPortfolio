@@ -1,0 +1,475 @@
+:root {
+    --bg-color: #ffffff;
+    /* White */
+    --text-color: #000000;
+    /* Black text */
+    --accent-color: #FF9933;
+    /* Saffron Orange */
+    --green-accent: #138808;
+    /* India Green */
+    --vignette-color: #138808;
+    /* Green tint for vignette */
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Vignette Effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 150px rgba(255, 153, 51, 0.1), inset 0 0 50px rgba(19, 136, 8, 0.05);
+    /* Saffron and Green glow */
+    pointer-events: none;
+    z-index: 90;
+}
+
+/* Ensure videos are interactive */
+.video-wrapper {
+    z-index: 95;
+    position: relative;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #000000;
+    text-shadow:
+        -1px -1px 0 #fff,
+        1px -1px 0 #fff,
+        -1px 1px 0 #fff,
+        1px 1px 0 #fff;
+    /* White border effect */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-speed);
+}
+
+ul {
+    list-style: none;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: transparent;
+    /* Or semi-transparent if needed */
+    backdrop-filter: blur(5px);
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+nav ul {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    opacity: 0.7;
+}
+
+nav a:hover {
+    opacity: 1;
+    color: var(--accent-color);
+}
+
+/* Mobile Nav Toggle */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 5%;
+    position: relative;
+}
+
+.hero-content {
+    z-index: 1;
+    max-width: 800px;
+}
+
+.hero-image {
+    width: 300px;
+    height: 300px;
+    background-color: #ddd;
+    border-radius: 50%;
+    /* Or specific shape */
+    margin-bottom: 2rem;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 4px solid var(--accent-color);
+    object-position: top center;
+    /* Ensure face is visible */
+    margin-top: 5rem;
+    /* Push down to ensure visibility */
+}
+
+.hero h1 {
+    font-size: 4rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 2rem;
+    transition: transform 0.2s;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+    background-color: #e65100;
+}
+
+/* Section Common */
+section {
+    padding: 5rem 5%;
+}
+
+.section-title {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 1rem;
+}
+
+/* About Section */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Music Grid */
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.music-card {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    transition: transform 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-top: 3px solid var(--accent-color);
+}
+
+.music-card:hover {
+    transform: translateY(-5px);
+}
+
+.music-cover {
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: #eee;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.music-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.music-info p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.stream-btn {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    background: var(--accent-color);
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.stream-btn:hover {
+    background-color: #e65100;
+}
+
+/* Videos */
+.videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 177.77%;
+    /* 9:16 Aspect Ratio */
+    height: 0;
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 95;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-wrapper.landscape {
+    padding-bottom: 56.25%;
+    /* 16:9 Aspect Ratio */
+}
+
+/* Skills */
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.skill-tag {
+    background: var(--accent-color);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Music/Project Grid */
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+/* ... existing music styles ... */
+
+/* Contact Section (Replaces Newsletter) */
+.newsletter {
+    background: #f5f5f5;
+    text-align: center;
+    padding: 6rem 5%;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.contact-link {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #000;
+    border-bottom: 2px solid transparent;
+}
+
+.contact-link:hover {
+    border-bottom: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.contact-link i {
+    margin-right: 0.5rem;
+}
+
+/* Footer */
+footer {
+    background: #111;
+    color: #fff;
+    padding: 3rem 5%;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-links a {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    color: #fff;
+}
+
+.copyright {
+    color: #555;
+    font-size: 0.8rem;
+}
+
+/* Responsive */
+/* Experience Card Sizing - 50% smaller feel */
+.gig-card {
+    padding: 1rem !important;
+    font-size: 0.85rem;
+    max-width: 80%;
+    /* restrict width */
+    margin: 0 auto;
+    /* center */
+}
+
+.gig-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem !important;
+}
+
+.gig-card img {
+    margin-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        padding: 1.5rem 5%;
+        background: rgba(255, 255, 255, 0.95);
+        border-bottom: 2px solid var(--accent-color);
+        /* White header with Saffron border */
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+        color: var(--accent-color);
+        position: absolute;
+        top: 1.5rem;
+        right: 5%;
+        z-index: 101;
+        /* Ensure it stays on top */
+    }
+
+    .hero {
+        padding-top: 9rem;
+        /* Lower content below header */
+        justify-content: flex-start;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    /* Mobile Menu */
+    nav.active ul {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        border-top: 3px solid var(--green-accent);
+        /* White menu with Green accent */
+        padding: 2rem;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .gig-card {
+        max-width: 100%;
+        /* Full width on mobile */
+    }
+
+    .experience-content {
+        gap: 1.5rem !important;
+    }
+}
